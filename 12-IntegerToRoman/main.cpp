@@ -1,13 +1,14 @@
 #include <iostream>
 #include <string>
-#include <unordered_map>
-
+#include <vector>
 
 class Solution {
 public:
   std::string intToRoman(int num) {
-    std::unordered_map<int, std::string> map = {
-      {1000, "M"},
+    std::string romanNumber = "";
+
+    std::vector<std::pair<int, std::string>> val_sym_pairs =
+    { {1000, "M"},
       {900, "CM"},
       {500, "D"},
       {400, "CD"},
@@ -19,21 +20,25 @@ public:
       {9, "IX"},
       {5, "V"},
       {4, "IV"},
-      {1, "I"}
-    };
+      {1, "I"} };
 
-    for(const auto& [key , value]: map) {
-      std::cout << key << value << "\n";
+
+    for(const auto &[val, symbol]: val_sym_pairs) {
+      while(num >= val) {
+        romanNumber += symbol;
+        num -= val;
+      }
     }
 
-    return  "";
-    }
+
+    return romanNumber;
+  }
 };
-
 
 int main() {
   Solution s;
-  s.intToRoman(100);
+  auto romanNumber = s.intToRoman(1908);
+  std::cout << romanNumber;
 
   return 0;
 }
