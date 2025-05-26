@@ -38,7 +38,8 @@ public:
 int main() {
   Solution s;
   auto romanNumber = s.intToRoman(1908);
-  std::cout << romanNumber;
+  std::cout << romanNumber << "\n";
+  std::cout << "hola mundo";
 
   return 0;
 }
